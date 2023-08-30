@@ -1,19 +1,13 @@
 package com.graduate.IRLEnglishcenter.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.graduate.IRLEnglishcenter.dto.RegisterCourseRequest;
-import com.graduate.IRLEnglishcenter.dto.RegisterCourseResponse;
 import com.graduate.IRLEnglishcenter.dto.StudentResponse;
 import com.graduate.IRLEnglishcenter.entity.EPaymentStatus;
 import com.graduate.IRLEnglishcenter.entity.RegisterCourse;
@@ -21,7 +15,7 @@ import com.graduate.IRLEnglishcenter.entity.Student;
 import com.graduate.IRLEnglishcenter.repository.CourseRepository;
 import com.graduate.IRLEnglishcenter.repository.RegisterCourseRepository;
 import com.graduate.IRLEnglishcenter.repository.StudentRepository;
-import com.graduate.IRLEnglishcenter.exception.ResourceNotFoundException;
+
 
 @RestController
 @RequestMapping("/api")
@@ -58,7 +52,6 @@ public class RegisterCourseController {
 		student.setGender(studentResponse.getGender());
 		student.setCitizenId(studentResponse.getCitizenId());
 		student.setAddress(studentResponse.getAddress());
-
 		return student;
 	}
 //nv dao tao xem khoa hoc dang ki
