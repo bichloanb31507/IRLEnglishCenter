@@ -33,6 +33,13 @@ public class EducationProgram {
 	private String name;
 	@Column(name = "description")
 	private String description;
-	 @OneToMany(mappedBy = "education_programs", cascade = CascadeType.ALL)
+	
+	 public EducationProgram(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+	@OneToMany(mappedBy = "education_programs", cascade = CascadeType.ALL)
 	    private List<Course> courses = new ArrayList<>();
 }

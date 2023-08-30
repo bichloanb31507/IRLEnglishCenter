@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,10 +33,12 @@ public class RegisterCourse {
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "student_id")
+	@JsonIgnore
 	private Student students;
 	
 	@ManyToOne
 	@JoinColumn(name = "course_id")
+	@JsonIgnore
 	private Course courses;
 	
 	@Column(name="entry_score")

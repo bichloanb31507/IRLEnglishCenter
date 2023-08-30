@@ -34,4 +34,10 @@ public class StudyTime {
 	private int number_of_day_study;
 	@OneToMany(mappedBy = "study_times", cascade = CascadeType.ALL)
     private List<ClassificationClass> classification_classes = new ArrayList<>();
+	public StudyTime(String name, int number_of_day_study) {
+		super();
+		this.name = name;
+		this.number_of_day_study = number_of_day_study;
+	}
+	
 }

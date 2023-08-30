@@ -35,4 +35,10 @@ public class Shift {
 	private String study_duration;
 	@OneToMany(mappedBy = "shifts", cascade = CascadeType.ALL)
     private List<ClassificationClass> classification_classes = new ArrayList<>();
+	public Shift(String name, String study_duration) {
+		super();
+		this.name = name;
+		this.study_duration = study_duration;
+	}
+	
 }

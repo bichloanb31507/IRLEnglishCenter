@@ -45,7 +45,8 @@ public class Course {
 	private LocalDate day_opening;
 	@Column(name = "course_completion_time")
 	private LocalDate course_completion_time;
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne()
 	@JoinColumn(name = "education_program_id")
 	@JsonIgnore
 	private EducationProgram education_programs;
