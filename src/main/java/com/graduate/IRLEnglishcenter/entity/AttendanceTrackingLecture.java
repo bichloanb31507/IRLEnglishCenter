@@ -1,10 +1,7 @@
 package com.graduate.IRLEnglishcenter.entity;
 
-import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,29 +16,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//cham cong nhan vien
 @Entity
-@Table(name = "student_classifications")
+@Table(name = "attendancetracking_lectures")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentClassification {
+public class AttendanceTrackingLecture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "student_id")
-	private Student students;
-	
-	@ManyToOne
-	@JoinColumn(name = "classification_class_id")
+	@JoinColumn(name = "timesheet_id")
 	@JsonIgnore
-	private ClassificationClass classification_classes;
-	
-	@Column(name = "opening_day")
-	private LocalDate opening_day;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(length = 20)
-	private ClassStatus status;
+	private TimeSheet timesheets;
+	@ManyToOne
+	@JoinColumn(name = "lecture_id")
+	@JsonIgnore
+	private Lecture lectures;
+	@Column(name = "numberHourOfWorking")
+    private double numberHourOfWorking;
 }

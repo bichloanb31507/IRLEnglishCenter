@@ -2,7 +2,9 @@ package com.graduate.IRLEnglishcenter.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -58,4 +60,8 @@ public class Lecture {
     private Account accounts;
 	@OneToMany(mappedBy = "lectures", cascade = CascadeType.ALL)
 	private List<ClassificationClass> classification_classes = new ArrayList<>();
+	@OneToMany(mappedBy = "lectures", cascade = CascadeType.ALL)
+	private List<LectureSalary> lectureSalaries = new ArrayList<>();
+	@OneToMany(mappedBy = "lectures")
+	private Set<AttendanceTrackingLecture> attendanceTrackingLectures = new HashSet<>();
 }

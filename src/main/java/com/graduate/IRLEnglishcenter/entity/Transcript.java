@@ -1,15 +1,16 @@
 package com.graduate.IRLEnglishcenter.entity;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,4 +51,13 @@ public class Transcript {
 	private Double speaking_exam;
 	@Column(name="writing_exam")
 	private Double writing_exam;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id")
+	@JsonIgnore
+	private Student students;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "course_id")
+	@JsonIgnore
+	private Course courses;
 }
