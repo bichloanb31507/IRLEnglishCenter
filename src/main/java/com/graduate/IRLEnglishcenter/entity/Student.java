@@ -55,4 +55,8 @@ public class Student {
 	private Set<RegisterCourse> registerCourses = new HashSet<>();
 	@OneToMany(mappedBy = "students")
 	private Set<StudentClassification> student_classifications = new HashSet<>();
+	@OneToMany(mappedBy = "students")
+	private Set<Transcript> transcripts = new HashSet<>();
+	@OneToMany(mappedBy = "students")
+	private Set<TuitionFeeReceipt> tuitionFeeReceipts = new HashSet<>();
 }

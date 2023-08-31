@@ -31,6 +31,7 @@ public class ClassificationRoom {
 	
 	@ManyToOne
     @JoinColumn(name = "classroom_id")
+	 @JsonIgnore
     private ClassRoom classrooms;
 
     @ManyToOne
