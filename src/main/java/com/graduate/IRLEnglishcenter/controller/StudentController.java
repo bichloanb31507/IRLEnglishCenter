@@ -94,9 +94,7 @@ public class StudentController {
 		boolean isUnique = false;
 
 		while (!isUnique) {
-//			int randomNumber = random.nextInt(900) + 100; // Sinh số ngẫu nhiên từ 100 đến 999
-//			codeBuilder.append(randomNumber);
-//			String code = "SV" + codeBuilder.toString();
+//			
 			int randomNumber = random.nextInt(999) + 1; // Sinh số ngẫu nhiên từ 1 đến 999
 		    String code = String.format("SV%03d", randomNumber); // Định dạng mã code với 3 chữ số và số 0 đứng đầu (nếu cần)
 
