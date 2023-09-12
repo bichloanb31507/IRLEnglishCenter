@@ -29,42 +29,30 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public List<CourseResponse> getAllCourse(String code) {
-		List<Course> courseData = new ArrayList<Course>();
+	    List<Course> courseData = new ArrayList<>();
 
-		if (code == null)
-			courseRepository.findAll().forEach(courseData::add);
-		else
-			courseRepository.findByCodeContaining(code).forEach(courseData::add);
+	    if (code == null)
+	        courseRepository.findAll().forEach(courseData::add);
+	    else
+	        courseRepository.findByCodeContaining(code).forEach(courseData::add);
 
-		List<CourseResponse> response = new ArrayList<>();
-
-		for (Course item : courseData) {
-			EducationProgramResponse educationProgramDTO = new EducationProgramResponse();
-			educationProgramDTO.setId(item.getEducation_programs().getId());
-			educationProgramDTO.setName(item.getEducation_programs().getName());
-			educationProgramDTO.setDescription(item.getEducation_programs().getDescription());
-//			response.add(new CourseResponse(item.getId(), item.getCode(), item.getName(), item.getTuition(),
-//					item.getDay_opening(), item.getStatus(), item.getCourse_completion_time(), educationProgramDTO,
-//					item.getCreated_at()));
-		}
-
-		return response;
+	    return convertToCourseResponses(courseData);
 	}
 
 	@Override
 	public CourseResponse getCourseById(Long id) {
-		Course course = courseRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Not found Course with id = " + id));
+	    Course course = courseRepository.findById(id)
+	            .orElseThrow(() -> new ResourceNotFoundException("Not found Course with id = " + id));
 
-		EducationProgramResponse educationProgramDTO = new EducationProgramResponse();
-		educationProgramDTO.setId(course.getEducation_programs().getId());
-		educationProgramDTO.setName(course.getEducation_programs().getName());
-		educationProgramDTO.setDescription(course.getEducation_programs().getDescription());
+	    List<Course> courseList = new ArrayList<>();
+	    courseList.add(course);
+	    List<CourseResponse> courseResponseList = convertToCourseResponses(courseList);
 
-//		return new CourseResponse(course.getId(), course.getCode(), course.getName(), course.getTuition(),
-//				course.getDay_opening(), course.getStatus(), course.getCourse_completion_time(), educationProgramDTO,
-//				course.getCreated_at());
-		return null;
+	    if (!courseResponseList.isEmpty()) {
+	        return courseResponseList.get(0);
+	    } else {
+	        throw new ResourceNotFoundException("Not found CourseResponse for Course with id = " + id);
+	    }
 	}
 
 	@Override
